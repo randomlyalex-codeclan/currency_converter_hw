@@ -1,17 +1,47 @@
 <!DOCTYPE html>
- <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <link rel="stylesheet" href="./css/styles.css" media="all">
-        <script src="./js/bundle.js"></script>
-        
-    </head>
-    <body>
-        <div id="app">
-                hello world
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/styles.css" media="all">
+    <script src="./js/bundle.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h2>Currency Converter</h2>
+        <div>Mode: 
+        <select v-model="convertMethod">
+            <option value="from">Convert from EUR</option>
+            <option value="to">Convert to EUR</option>
+            <option value="any">Choose Any</option>
+        </select>
         </div>
-    </body>
+    <div>
+        <span>Amount: 
+            <input type="number" v-model="amountToConvert">
+        </span>
+        <span>
+        <select v-model="selectedCurrency">
+            <option v-for="(key, value) in exchangeRates" :value="{code: value, rate: key}">{{ value }}</option>
+        </select> 
+        </span>
+        <span v-if="convertMethod==='any'" > to 
+        <select v-model="selectedCurrency2">
+            <option v-for="(key, value) in exchangeRates" :value="{code: value, rate: key}">{{ value }}</option>
+        </select>
+        </span>
+
+        
+        <h2 v-if="Infinity > calculatedResult > 0">
+            <span>{{ calculatedResult }}</span> 
+            <span v-if="convertMethod === 'any'">{{ selectedCurrency2.code }}</span>
+            <span v-else-if="convertMethod === 'from'">{{ selectedCurrency.code }}</span>
+            <span v-else-if="convertMethod === 'to'">EUR</span>
+            <span v-else></span>
+        </h2>
+    </div>
+
+    </div>
+</body>
 </html>
