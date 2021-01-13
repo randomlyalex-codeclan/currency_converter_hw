@@ -16,22 +16,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 code: null
             },
             amountToConvert: null,
-            convertMethod: null,
-            convertFrom: null,
-            convertTo: null
+            convertMethod: null
         },
         computed: {
             calculatedResult: function () {
-                if (this.convertMethod === 'from') {
-                    const result = (this.amountToConvert / this.selectedCurrency.rate).toFixed(2)
-                    return result
+                if (this.convertMethod === 'from-eur') {
+                    const result = this.amountToConvert * this.selectedCurrency.rate
+                    return result.toFixed(2)
                 }
-                else if (this.convertMethod === 'to') {
-                    const result = (this.amountToConvert / this.selectedCurrency.rate).toFixed(2)
-                    return result}
+                else if (this.convertMethod === 'to-eur') {
+                    const result = this.amountToConvert / this.selectedCurrency.rate
+                    return result.toFixed(2)
+                }
                 else if (this.convertMethod === 'any') {
-                    const result = ((this.amountToConvert / this.selectedCurrency.rate)*this.selectedCurrency2.rate).toFixed(2)
-                    return result
+                    const result = (this.amountToConvert / this.selectedCurrency.rate)*this.selectedCurrency2.rate
+                    return result.toFixed(2)
                 }
                 else return null
             }

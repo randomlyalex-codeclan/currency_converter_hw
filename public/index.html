@@ -9,11 +9,11 @@
 </head>
 <body>
     <div id="app">
-        <h2>Currency Converter</h2>
+        <h2>Currency Converter as of {{date}}</h2>
         <div>Mode: 
         <select v-model="convertMethod">
-            <option value="from">Convert from EUR</option>
-            <option value="to">Convert to EUR</option>
+            <option value="from-eur">Convert from EUR</option>
+            <option value="to-eur">Convert to EUR</option>
             <option value="any">Choose Any</option>
         </select>
         </div>
@@ -36,8 +36,8 @@
         <h2 v-if="Infinity > calculatedResult > 0">
             <span>{{ calculatedResult }}</span> 
             <span v-if="convertMethod === 'any'">{{ selectedCurrency2.code }}</span>
-            <span v-else-if="convertMethod === 'from'">{{ selectedCurrency.code }}</span>
-            <span v-else-if="convertMethod === 'to'">EUR</span>
+            <span v-else-if="convertMethod === 'from-eur'">{{ selectedCurrency.code }}</span>
+            <span v-else-if="convertMethod === 'to-eur'">EUR</span>
             <span v-else></span>
         </h2>
     </div>
