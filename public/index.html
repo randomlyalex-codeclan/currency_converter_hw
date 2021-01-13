@@ -23,12 +23,12 @@
         </span>
         <span>
         <select v-model="selectedCurrency">
-            <option v-for="(key, value) in exchangeRates" :value="{code: value, rate: key}">{{ value }}</option>
+            <option v-for="(value, name) in exchangeRates" :value="{code: name, rate: value}">{{ name }}</option>
         </select> 
         </span>
         <span v-if="convertMethod==='any'" > to 
         <select v-model="selectedCurrency2">
-            <option v-for="(key, value) in exchangeRates" :value="{code: value, rate: key}">{{ value }}</option>
+            <option v-for="(value, value) in exchangeRates" :value="{code: name, rate: value}">{{ name }}</option>
         </select>
         </span>
 
